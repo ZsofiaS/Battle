@@ -44,3 +44,14 @@ feature 'displays player turns' do
     expect(page).to have_content("It's Kate's turn")
   end
 end
+
+feature "displays when player loses" do
+  scenario "shows player2 loses" do
+    sign_in_and_play
+    9.times do
+      click_button("attack")
+      click_button("ok")
+    end
+    expect(page).to have_content("Kate loses")
+  end
+end
